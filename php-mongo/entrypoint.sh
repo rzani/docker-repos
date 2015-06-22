@@ -23,10 +23,14 @@ if [ -z ${CHARSET} ]; then
     CHARSET="UTF-8"
 fi
 
-# Internal duplicate confs resolution
-APACHE_CONF="/etc/apache2/sites-available/$APP_NAME.conf"
-if [ -f "$APACHE_CONF" ]; then
-    rm $APACHE_CONF
+if [ -z ${CUSTOM_VHOST} ]; then
+    APACHE_CONF="/$APP_NAME.conf"
+else
+    APACHE_CONF="/etc/apache2/sites-available/$APP_NAME.conf"
+    # Internal duplicate confs resolution
+    if [ -f "$APACHE_CONF" ]; then
+        rm $APACHE_CONF
+    fi
 fi
 
 cat > "$APACHE_CONF" <<-EOCONF
