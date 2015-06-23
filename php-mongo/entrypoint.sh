@@ -23,7 +23,7 @@ if [ -z ${CHARSET} ]; then
     CHARSET="UTF-8"
 fi
 
-if [ -z ${CUSTOM_VHOST} ]; then
+if [ -z ${SERVER_NAME} ]; then
     APACHE_CONF="/$APP_NAME.conf"
 else
     APACHE_CONF="/etc/apache2/sites-available/$APP_NAME.conf"
