@@ -3,10 +3,6 @@ set -e
 
 # ====|==== 80  ====|==== #
 
-if [ -z ${SERVER_NAME} ]; then
-    SERVER_NAME="localhost"
-fi
-
 if [ -z ${SERVER_ALIAS} ]; then
     SERVER_ALIAS="localhost"
 fi
@@ -25,6 +21,7 @@ fi
 
 if [ -z ${SERVER_NAME} ]; then
     APACHE_CONF="/$APP_NAME.conf"
+    SERVER_NAME="localhost"
 else
     APACHE_CONF="/etc/apache2/sites-available/$APP_NAME.conf"
     # Internal duplicate confs resolution
