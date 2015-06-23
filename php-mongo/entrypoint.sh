@@ -103,4 +103,16 @@ if [ -f "/etc/apache2/sites-enable/$APP_NAME.conf" ]; then
     /usr/sbin/a2ensite "$APP_NAME" && /usr/sbin/a2ensite "$APP_NAME-ssl"
 fi
 
+# ===|=== Configure XDebug ===|===#
+
+sed -i '/xdebug.remote_host/d' /etc/php5/mods-available/xdebug.ini
+
+gateway=`route |grep default |awk '{print $2}'`
+
+(
+cat << DEBUG
+xdebug.remote_host = $gateway
+DEBUG
+) >> /etc/php5/mods-available/xdebug.ini
+
 exec "$@"

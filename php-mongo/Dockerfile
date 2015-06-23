@@ -62,6 +62,8 @@ RUN rm -Rf /var/cache/* && \
     rm -Rf /usr/share/doc/* && \
     rm -Rf /usr/share/man/*
 
+# Copy remote xdebug configuration
+COPY ./xdebug.ini /etc/php5/mods-available/xdebug.ini
 
 # Copy entrypoint
 COPY ./entrypoint.sh /
@@ -70,5 +72,6 @@ ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 80
 EXPOSE 443
+EXPOSE 9000
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
