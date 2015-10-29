@@ -11,7 +11,7 @@ MAINTAINER Rodrigo Zani <rodrigo.zhs@gmail.com>
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && \
-    apt-get -yq php-pear
+    apt-get install -yq php-pear
 
 # Install MongoDB driver
 RUN pecl install mongo
