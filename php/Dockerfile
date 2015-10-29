@@ -60,4 +60,9 @@ COPY apache2.conf /etc/apache2/apache2.conf
 WORKDIR /var/www/html
 
 EXPOSE 80
+
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod 0777 /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
 CMD ["apache2start"]
