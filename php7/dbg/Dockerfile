@@ -1,7 +1,7 @@
 #
-# APACHE Dockerfile
+# php7:dbg Dockerfile
 #
-# https://github.com/rzani/docker-workspace
+# https://github.com/rzani/docker-repos
 
 FROM rzani/php7
 
